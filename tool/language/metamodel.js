@@ -78,6 +78,12 @@ istar.metamodel = {
             "canBeInnerElement": true,
             "canBeDependum": true,
             "canBeOnPaper": false
+        },
+        // NEW IDEA NODE
+        "Idea": {
+            "canBeInnerElement": true,
+            "canBeDependum": false,
+            "canBeOnPaper": true
         }
     },
 
@@ -117,6 +123,10 @@ istar.metamodel = {
         "ContributionLink": {
             "changeableLabel": true,
             "possibleLabels": ["make", "help", "hurt", "break"]
+        },
+        "AssociationLink": {
+            "changeableLabel": true,
+            "possibleLabels": ["is associated to"]
         }
     }
 };

@@ -192,6 +192,31 @@ joint.shapes.istar.Resource = joint.shapes.basic.Rect.extend({
     }, joint.shapes.basic.Rect.prototype.defaults)
 });
 
+//NEW IDEA NODE
+joint.shapes.istar.Idea = joint.shapes.basic.Rect.extend({
+    markup: '<g class="scalable"><rect class="element"/></g><text class="content"/>',
+    defaults: joint.util.deepSupplement({
+        type: 'Idea',
+        size: {width: 70, height: 70},
+        attrs: {
+            rect: {
+                fill: 'rgb(255, 255, 204)',
+                height: 30,
+                rx: 0,
+                stroke: 'black',
+                'stroke-width': 2,
+                'vector-effect': 'non-scaling-stroke', /* prevents stroke distortion when the element is resized */
+                width: 130
+            },
+            text: {
+                'font-size': 12,
+                'font-weight': 'bold',
+                text: 'Idea'
+            }
+        }
+    }, joint.shapes.basic.Rect.prototype.defaults)
+});
+
 joint.shapes.istar.Task = joint.shapes.basic.Polygon.extend({
     markup: '<g class="scalable"><polygon class="element"/></g><text class="content"/>',
     defaults: joint.util.deepSupplement({
@@ -645,6 +670,78 @@ joint.shapes.istar.QualificationLink = joint.dia.Link.define('QualificationLink'
         ]
     }
 );
+
+//NEW ASSOCIATION LINK
+
+joint.shapes.istar.AssociationLink = joint.dia.Link.define('AssociationLink', 
+    {
+        attrs: {
+            line: {
+                connection: true,
+                fill: 'none',
+                stroke: 'rgb(6,6,255)',
+                'stroke-width': 1,
+                targetMarker: {
+                    'd': 'm 10,-6 l -10,6 10,6',
+                    fill: 'none',
+                    'stroke-width': 1.2,
+                    'type': 'path',
+                }
+            },
+            'connection-wrap': {
+                connection: true,
+                fill: 'none',
+                stroke: 'transparent',
+                'stroke-linecap': 'round',
+                'stroke-width': 20
+            },
+            smooth: true
+        },
+        /*label: {
+            text: 'is associated to',
+            fill: 'rgb(242,242,242)',
+            fontSize: 12,
+            fontWeight: 'bold',
+            //fontVariant: 'small-caps',
+            /textShadow: '1px 1px 1px black'
+        }
+        labels: [
+            {
+                position: 0.4,
+                attrs: {
+                    text: {
+                        'font-family': 'sans-serif',
+                        'font-size': 12,
+                        'font-weight': 'bold'
+                    },
+                    rect: {
+                        fill: 'rgb(242,242,242)',
+                    }
+                }
+            }
+        ],*/
+        source: {selector: 'circle'},
+        target: {selector: 'circle'}
+    },
+    {
+        markup: [
+            {
+                className: 'c-connection-wrap',
+                selector: 'connection-wrap',
+                tagName: 'path'
+            },
+            {
+                selector: 'line',
+                tagName: 'path'
+            },
+            {
+                selector: 'label',
+                tagName: 'text'
+            }
+        ]
+    }
+);
+
 
 /*definition of globals to prevent undue JSHint warnings*/
 /*globals joint:false */

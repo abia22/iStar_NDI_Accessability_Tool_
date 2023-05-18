@@ -32,6 +32,12 @@ ui.setupMetamodelUI = function () {
         istar.metamodel.nodes.Resource.buttonStatusText = 'Adding <b>Resource</b>: Click on an actor/role/agent to add a Resource';
     }
 
+    //NEW IDEA NODE
+
+    if (istar.metamodel.nodes.Idea) {
+        istar.metamodel.nodes.Resource.buttonStatusText = 'Adding <b>Idea</b>: Click on canvas to add an Idea';
+    }
+
     if (istar.metamodel.containerLinks.IsALink) {
         istar.metamodel.containerLinks.IsALink.buttonLabel = 'Is A Link';
         istar.metamodel.containerLinks.IsALink.buttonTooltip = 'Add an Is-A link between an Actor and another Actor, or between a Role and another Role';
@@ -62,6 +68,13 @@ ui.setupMetamodelUI = function () {
         istar.metamodel.nodeLinks.QualificationLink.buttonLabel = 'Qualification';
         istar.metamodel.nodeLinks.QualificationLink.buttonTooltip = 'Add Qualification link';
         istar.metamodel.nodeLinks.QualificationLink.buttonStatusText = 'Adding <b>Qualification</b> link: click on the Quality and on the element it qualifies (Goal, Task or Resource).';
+    }
+
+    //NEW ASSOCIATION NODE
+    if (istar.metamodel.nodeLinks.AssociationLink) {
+        istar.metamodel.nodeLinks.AssociationLink.buttonLabel = 'Association';
+        istar.metamodel.nodeLinks.AssociationLink.buttonTooltip = 'Add Association link';
+        istar.metamodel.nodeLinks.AssociationLink.buttonStatusText = 'Adding <b>Association</b> link: click on the Idea and on the actor that is associated to.';
     }
 
     if (istar.metamodel.nodeLinks.ContributionLink) {
