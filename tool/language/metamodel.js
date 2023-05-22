@@ -125,8 +125,12 @@ istar.metamodel = {
             "possibleLabels": ["make", "help", "hurt", "break"]
         },
         "AssociationLink": {
+            //"changeableLabel": true,
+            //"possibleLabels": ["is associated to"]
+        },
+        "AffectLink": {
             "changeableLabel": true,
-            "possibleLabels": ["is associated to"]
+            "possibleLabels": ["relates", "restricts"]
         }
     }
 };

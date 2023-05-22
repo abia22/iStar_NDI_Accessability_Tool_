@@ -733,10 +733,65 @@ joint.shapes.istar.AssociationLink = joint.dia.Link.define('AssociationLink',
             {
                 selector: 'line',
                 tagName: 'path'
+            }
+        ]
+    }
+);
+
+joint.shapes.istar.AffectLink = joint.dia.Link.define('AffectLink',
+    {
+        attrs: {
+            line: {
+                connection: true,
+                fill: 'none',
+                stroke: 'rgb(6,6,255)',
+                'stroke-dasharray': '10,5',
+                'stroke-width': 1,
+                targetMarker: {
+                    'd': 'm 10,-6 l -10,6 10,6',
+                    fill: 'none',
+                    'stroke-width': 1.2,
+                    'type': 'path',
+                }
+            },
+            'connection-wrap': {
+                connection: true,
+                fill: 'none',
+                stroke: 'transparent',
+                'stroke-linecap': 'round',
+                'stroke-width': 20
+            },
+            smooth: true
+        },
+        labels: [
+            {
+                position: 0.4,
+                attrs: {
+                    text: {
+                        'font-family': 'sans-serif',
+                        'font-size': 12,
+                        'font-weight': 'bold',
+                        fill: 'rgb(6,6,255)'
+                    },
+                    rect: {
+                        fill: 'rgb(242,242,242)',
+                    }
+                }
+            }
+        ],
+        source: {selector: 'circle'},
+        target: {selector: 'circle'}
+    },
+    {
+        markup: [
+            {
+                className: 'c-connection-wrap',
+                selector: 'connection-wrap',
+                tagName: 'path'
             },
             {
-                selector: 'label',
-                tagName: 'text'
+                selector: 'line',
+                tagName: 'path'
             }
         ]
     }

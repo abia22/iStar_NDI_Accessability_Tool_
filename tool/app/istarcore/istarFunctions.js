@@ -665,7 +665,18 @@ var istar = function () {
                 });
             }
             return isDuplicated;
+        },
+        isElementSourceOfType: function (element, typeName) {
+            //check if an element already has a link of typeName
+            //returns true if an element already has a link of a certain type
+            var currentLinksFromElement = istar.graph.getConnectedLinks(element);
+            var isSourceOf = false;
+            _.forEach(currentLinksFromElement, function (link) {
+                isSourceOf = isSourceOf || ((link.getSourceElement() === element) && (link.prop('type') === typeName));
+            });
+            return isSourceOf;
         }
+        
     };
 }();
 

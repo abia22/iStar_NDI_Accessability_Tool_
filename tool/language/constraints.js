@@ -448,5 +448,68 @@ istar.metamodel.nodeLinks.QualificationLink.isValid = function (source, target) 
     return result;
 };
 
+istar.metamodel.nodeLinks.AssociationLink.isValid = function (source, target) {
+    'use strict';
+
+    //creative requirements extension 
+    //idea->actor
+    //An idea should be connected to one actor only
+
+    var result = {};
+    var isValid = true;
+    if ( !(source.isIdea()) ) {
+        isValid = false;
+        result.message = 'the source of an Association link must be an Idea';
+    }
+    if ( isValid && !(target.isActor() || target.isRole() || target.isAgent()) ) {
+        isValid = false;
+        result.message = 'the target of an Association link must be an Actor';
+    }
+    if ( isValid && (source === target) ) {
+        isValid = false;
+        result.message = 'you cannot make an Association link from an element onto itself';
+    }
+    if( isValid && istar.isElementSourceOfType(source, 'AssociationLink') ) {
+        isValid = false;
+        result.message = 'an Idea can only be associated to one Actor';
+    }
+
+    result.isValid = isValid;
+    return result;
+};
+
+istar.metamodel.nodeLinks.AffectLink.isValid = function (source, target) {
+    'use strict';
+
+    //creative requirements extension 
+    //idea->intentional element, idea->idea
+
+    var result = {};
+    var isValid = true;
+    if ( !(source.isIdea()) ) {
+        isValid = false;
+        result.message = 'the source of an Affect link must be an Idea';
+    }
+    if ( isValid && target.isDependum() ) {
+        isValid = false;
+        result.message = 'you cannot make a Affect link with a dependum'
+    }
+    if ( isValid && !(target.isGoal() || target.isQuality() || target.isResource() || target.isTask() || target.isIdea()) ) {
+        isValid = false;
+        result.message = 'the target of an Affect link must be an Intentional Element (Goal, Quality, Resource, or Task) or another Idea';
+    }
+    if ( isValid && istar.isThereLinkBetween(source, target, 'AffectLink')) {
+        isValid = false;
+        result.message = 'there can only be one Affect link between the same two elements';
+    }
+    if ( isValid && (source === target) ) {
+        isValid = false;
+        result.message = 'you cannot make an Affect link from an Idea onto itself';
+    }
+    
+    result.isValid = isValid;
+    return result;
+};
+
 /*definition of globals to prevent undue JSHint warnings*/
 /*globals istar:false, joint:false, console:false, _:false */
