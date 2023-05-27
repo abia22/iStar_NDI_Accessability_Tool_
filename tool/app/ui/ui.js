@@ -1460,6 +1460,7 @@ ui.setupSidepanelInteraction = function () {
             }
         }
     };
+
     ui.collapseSidepanel = function () {
         if (sidepanelCurrentSize > 0) {
             if (sidepanelCurrentSize === (sidepanelSizes.length - 1)) {
@@ -1475,6 +1476,7 @@ ui.setupSidepanelInteraction = function () {
             }
         }
     };
+
     $('.collapse-sidepanel-button').click(ui.collapseSidepanel);
     $('.expand-sidepanel-button').click(ui.expandSidepanel);
 

@@ -130,7 +130,7 @@ istar.metamodel = {
         },
         "AffectLink": {
             "changeableLabel": true,
-            "possibleLabels": ["relates", "restricts"]
+            "possibleLabels": ["motivates", "restricts"]
         }
     }
 };

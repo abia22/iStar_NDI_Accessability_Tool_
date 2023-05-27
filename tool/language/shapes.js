@@ -738,6 +738,8 @@ joint.shapes.istar.AssociationLink = joint.dia.Link.define('AssociationLink',
     }
 );
 
+//NEW AFFECT LINK
+
 joint.shapes.istar.AffectLink = joint.dia.Link.define('AffectLink',
     {
         attrs: {
