@@ -518,3 +518,46 @@ svg * {
 .flash-off {
   transition: background-color .3s ease-out;
 }
+
+/*Right sidepanel with creative techniques*/
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  position: fixed;
+  right: 0;
+  width: 200px;
+  height: 100%;
+  background: #f5f5f5;
+}
+
+.sidebar header {
+  font-size: 22px;
+  color: #333;
+  text-align: center;
+  line-height: 70px;
+  user-select: none;
+  margin-right: 200;
+
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li{
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 65px;
+  font-size: 20px;
+ 
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid black;
+}
+
