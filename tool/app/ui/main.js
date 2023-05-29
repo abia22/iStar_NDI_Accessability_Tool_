@@ -26,5 +26,11 @@ $(document).ready(function () {
     //     'Beta version');
 });
 
+$(document).ready(function () {
+    $("#example").click(function () {
+      $('#exampleModal').modal('show'); 
+    });
+  });
+
 /*definition of globals to prevent undue JSHint warnings*/
 /*globals istar:false, ui:false, console:false, $:false */
