@@ -327,13 +327,14 @@ https://github.com/jhcp/pistar
             <i class="fas fa-bars" id="btn"></i>
             <i class="fas fa-times" id="cancel"></i>
         </label>
+        
         <div class="sidebar">
             <header>Creative Techniques</header>
             <ul>
-                <li id="example">
+                <li data-toggle="modal" data-target="#exampleModal">
                     <figure class="creative-img" >
                         <img src="https://www.pharmatimes.com/__data/assets/image/0010/1350937/creativity.jpg" alt="Creative">
-                        <figcaption class="creative-capt">Test1</figcaption>
+                        <figcaption class="creative-capt">Brainstorm</figcaption>
                     </figure>
                 </li>
                 <li>
@@ -372,15 +373,23 @@ https://github.com/jhcp/pistar
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal test</h1>
-          
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Brainstorm</h1>
         </div>
         <div class="modal-body">
-          It's working
+          Think about what problem you are trying to solve and the domain it is inserted to. Any idea is valid. Write what comes to mind. Write as many ideas as you can until you don't feel like it .
+          <form role="form">
+            <div class="form-group">
+                <label for="addIdea">Idea</label>
+                <input type="text" class="form-control" id="ideaText" placeholder="Enter idea">
+            </div>
+        </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="addIdea" data-dismiss="modal">Add</button>
         </div>
       </div>
     </div>

@@ -534,8 +534,6 @@ svg * {
   box-shadow: 0 4px 10px rgb(100,100,100);
   z-index: 1;
   transition: all .5s ease;
-  
-  
 }
 
 .sidebar header {
@@ -555,8 +553,8 @@ svg * {
   list-style-type: none;
   padding: 0;
   margin: 0;
-  height: 75%;
-  overflow:auto;
+  height: 80%;
+  overflow-y: scroll;
 }
 
 .sidebar ul li{

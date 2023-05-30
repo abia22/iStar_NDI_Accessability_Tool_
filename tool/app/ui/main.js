@@ -27,8 +27,9 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $("#example").click(function () {
-      $('#exampleModal').modal('show'); 
+    $("#addIdea").click(function () {
+      var idea = $("#exampleModal #ideaText").val();
+      istar.addIdea(idea);
     });
   });
 
