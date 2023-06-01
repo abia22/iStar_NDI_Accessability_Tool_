@@ -30,6 +30,9 @@ https://github.com/jhcp/pistar
     <link href="pistar.css" rel="stylesheet">
 
     <script src="https://kit.fontawesome.com/b8b5ce215f.js" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/smartwizard@6/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
@@ -337,7 +340,7 @@ https://github.com/jhcp/pistar
                         <figcaption class="creative-capt">Brainstorm</figcaption>
                     </figure>
                 </li>
-                <li>
+                <li data-toggle="modal" data-target="#exampleModal2">
                     <figure class="creative-img">
                         <img src="https://www.pharmatimes.com/__data/assets/image/0010/1350937/creativity.jpg" alt="Creative">
                         <figcaption class="creative-capt">Test2</figcaption>
@@ -379,11 +382,17 @@ https://github.com/jhcp/pistar
             <h1 class="modal-title fs-5" id="exampleModalLabel">Brainstorm</h1>
         </div>
         <div class="modal-body">
-          Think about what problem you are trying to solve and the domain it is inserted to. Any idea is valid. Write what comes to mind. Write as many ideas as you can until you don't feel like it .
+          Think about what problem you are trying to solve and the domain it is inserted to. Any idea is valid. Write what comes to mind. Write as many ideas as you can until you don't feel like it.
           <form role="form">
             <div class="form-group">
-                <label for="addIdea">Idea</label>
-                <input type="text" class="form-control" id="ideaText" placeholder="Enter idea">
+                <label for="idea">Idea 1</label>
+                <input type="text" class="form-control" id="ideaText1" placeholder="Enter idea">
+                <label for="idea">Idea 2</label>
+                <input type="text" class="form-control" id="ideaText2" placeholder="Enter idea">
+                <label for="idea">Idea 3</label>
+                <input type="text" class="form-control" id="ideaText3" placeholder="Enter idea">
+                <label for="idea">Idea 4</label>
+                <input type="text" class="form-control" id="ideaText4" placeholder="Enter idea">
             </div>
         </form>
         </div>
@@ -393,7 +402,66 @@ https://github.com/jhcp/pistar
         </div>
       </div>
     </div>
-  </div>
+</div>
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h5 class="modal-title" id="exampleModalLabel">Brainstorm</h5>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> 
+          </div>
+          <div class="modal-body">
+            <div id="smartwizard">
+                <ul class="nav">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#step-1">
+                        <div class="num">1</div>
+                        Define the problem
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#step-2">
+                        <span class="num">2</span>
+                        Generate ideas
+                      </a>
+                    </li>
+                    
+                </ul>
+             
+                <div class="tab-content">
+                    <div id="step-1" class="tab-pane" role="tabpanel" aria-labelledby="step-1">
+                        Think about what problem you are trying to solve and the domain it is inserted to. Write it down below.
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="problem">Problem or Domain</label>
+                                <input type="text" class="form-control" id="pdtext" placeholder="Enter problem or domain">
+                            </div>
+                        </form>
+                    </div>
+                    <div id="step-2" class="tab-pane" role="tabpanel" aria-labelledby="step-2">
+                        <div id="BrainstormText">Think about what problem you are trying to solve and the domain it is inserted to. Any idea is valid. Write what comes to mind. Write as many ideas as you can until you don't feel like it.</div>                  
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="idea">Idea 1</label>
+                                <input type="text" class="form-control" id="ideaText1" placeholder="Enter idea">
+                                <label for="idea">Idea 2</label>
+                                <input type="text" class="form-control" id="ideaText2" placeholder="Enter idea">
+                                <label for="idea">Idea 3</label>
+                                <input type="text" class="form-control" id="ideaText3" placeholder="Enter idea">
+                                <label for="idea">Idea 4</label>
+                                <input type="text" class="form-control" id="ideaText4" placeholder="Enter idea">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>  
+          </div>
+       </div>
+    </div>
+ </div>
+</div>
+  
 
 
 <!-- backbone templates -->
@@ -667,6 +735,8 @@ https://github.com/jhcp/pistar
 <script src="language/ui.metamodel.js"></script>
 
 <!-- insert your plugin(s) here, after this line -->
+
+<script src="https://cdn.jsdelivr.net/npm/smartwizard@6/dist/js/jquery.smartWizard.min.js" type="text/javascript"></script>
 
 <!-- end of plugin(s) area -->
 

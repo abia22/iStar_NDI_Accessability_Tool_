@@ -28,10 +28,27 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $("#addIdea").click(function () {
-      var idea = $("#exampleModal #ideaText").val();
-      istar.addIdea(idea);
+      var idea = [];
+      for (let i = 1; i < 5; i++) {
+        const text = $("#exampleModal #ideaText" + i).val();
+        if(text.replace(/\s/g, '').length)
+          idea.push(text);
+      }
+      
+      idea.forEach(e => {
+        istar.addIdea(e);
+      });
+      
     });
   });
+
+$(function() {
+    // SmartWizard initialize
+    $('#smartwizard').smartWizard();
+
+});
+
+
 
 /*definition of globals to prevent undue JSHint warnings*/
 /*globals istar:false, ui:false, console:false, $:false */

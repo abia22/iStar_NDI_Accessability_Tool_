@@ -553,7 +553,7 @@ svg * {
   list-style-type: none;
   padding: 0;
   margin: 0;
-  height: 80%;
+  height: 75%;
   overflow-y: scroll;
 }
 
