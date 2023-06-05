@@ -406,10 +406,10 @@ https://github.com/jhcp/pistar
 
 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-       <div class="modal-content">
+       <div class="modal-content" >
           <div class="modal-header">
-             <h5 class="modal-title" id="exampleModalLabel">Brainstorm</h5>
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> 
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> 
+            <h1 class="modal-title" id="exampleModalLabel">Brainstorm</h1>
           </div>
           <div class="modal-body">
             <div id="smartwizard">
@@ -431,7 +431,7 @@ https://github.com/jhcp/pistar
              
                 <div class="tab-content">
                     <div id="step-1" class="tab-pane" role="tabpanel" aria-labelledby="step-1">
-                        Think about what problem you are trying to solve and the domain it is inserted to. Write it down below.
+                        <p style="font-size: large; padding: 10px;">Think about what problem you are trying to solve and the domain it is inserted to. Write it down below.</p> 
                         <form role="form">
                             <div class="form-group">
                                 <label for="problem">Problem or Domain</label>
@@ -440,7 +440,10 @@ https://github.com/jhcp/pistar
                         </form>
                     </div>
                     <div id="step-2" class="tab-pane" role="tabpanel" aria-labelledby="step-2">
-                        <div id="BrainstormText">Think about what problem you are trying to solve and the domain it is inserted to. Any idea is valid. Write what comes to mind. Write as many ideas as you can until you don't feel like it.</div>                  
+                        <div style="font-size: medium; ">
+                            <p>You defined your problem as: <div id="brainstormText" ></div></p> 
+                            <p>Think about it and write what comes to mind. Any idea is valid. Write as many ideas as you can until you don't feel like it.</p>
+                        </div>                 
                         <form role="form">
                             <div class="form-group">
                                 <label for="idea">Idea 1</label>

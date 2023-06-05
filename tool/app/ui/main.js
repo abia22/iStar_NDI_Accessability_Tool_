@@ -30,7 +30,7 @@ $(document).ready(function () {
     $("#addIdea").click(function () {
       var idea = [];
       for (let i = 1; i < 5; i++) {
-        const text = $("#exampleModal #ideaText" + i).val();
+        const text = $("#exampleModal2 #ideaText" + i).val();
         if(text.replace(/\s/g, '').length)
           idea.push(text);
       }
@@ -40,14 +40,53 @@ $(document).ready(function () {
       });
       
     });
+});
+
+$('#exampleModal2').on('hidden.bs.modal', function (e) {
+  $('#smartwizard').smartWizard("reset");
+})
+
+function onFinish(){ 
+  var idea = [];
+  for (let i = 1; i < 5; i++) {
+    const text = $("#exampleModal2 #ideaText" + i).val();
+    if(text.replace(/\s/g, '').length)
+      idea.push(text);
+  }
+  
+  idea.forEach(e => {
+    istar.addIdea(e);
   });
+
+  onCancel();
+
+}
+
+function onCancel(){ $('#smartwizard').smartWizard("reset"); $('#exampleModal2').modal('hide');}
 
 $(function() {
     // SmartWizard initialize
-    $('#smartwizard').smartWizard();
+    $('#smartwizard').smartWizard({
+      autoAdjustHeight: true,
+      toolbar: {
+        extraHtml: `<button class="btn btn-success" id='finish' onclick="onFinish()">Finish</button>
+                    <button class="btn btn-secondary" onclick="onCancel()">Cancel</button>`
+      }
+    });
 
 });
 
+$("#smartwizard").on("showStep", function(e, anchorObject, currentStepIndex, nextStepIndex, stepDirection) {
+  if(currentStepIndex == 1){
+    $('#finish').show();
+    const element = document.getElementById('brainstormText');
+    const pdtext = $('#exampleModal2 #pdtext').val();
+    element.textContent = pdtext;
+    element.style.fontWeight = 'bold'; 
+  }else{
+      $('#finish').hide();                
+  }
+});
 
 
 /*definition of globals to prevent undue JSHint warnings*/
