@@ -634,3 +634,10 @@ label #cancel {
 #check:checked ~ label #cancel {
   right: 160px;
 }
+
+label.error {
+  font-weight: 600;
+  display: block;
+  color: #f00;
+  font-size: 12px;
+}

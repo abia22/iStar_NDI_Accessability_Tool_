@@ -30,7 +30,7 @@ $(document).ready(function () {
     $("#addIdea").click(function () {
       var idea = [];
       for (let i = 1; i < 5; i++) {
-        const text = $("#exampleModal2 #ideaText" + i).val();
+        const text = $("#brainstormModal #ideaText" + i).val();
         if(text.replace(/\s/g, '').length)
           idea.push(text);
       }
@@ -42,14 +42,14 @@ $(document).ready(function () {
     });
 });
 
-$('#exampleModal2').on('hidden.bs.modal', function (e) {
+$('#brainstormModal').on('hidden.bs.modal', function (e) {
   $('#smartwizard').smartWizard("reset");
 })
 
-function onFinish(){ 
+function addIdeasToModel(){
   var idea = [];
   for (let i = 1; i < 5; i++) {
-    const text = $("#exampleModal2 #ideaText" + i).val();
+    const text = $("#brainstormModal #ideaText" + i).val();
     if(text.replace(/\s/g, '').length)
       idea.push(text);
   }
@@ -57,34 +57,73 @@ function onFinish(){
   idea.forEach(e => {
     istar.addIdea(e);
   });
-
-  onCancel();
-
 }
 
-function onCancel(){ $('#smartwizard').smartWizard("reset"); $('#exampleModal2').modal('hide');}
+function onContinue() {
+  addIdeasToModel();
+  $('#brainstormIdeasForm')[0].reset();
+}
+
+function onFinish(){ 
+  addIdeasToModel();
+  onClose();
+}
+
+function onClose(){ 
+  $('#smartwizard').smartWizard("reset"); 
+  $('#brainstormModal').modal('hide'); 
+  $('#pdform')[0].reset();
+  $('#brainstormIdeasForm')[0].reset();
+}
 
 $(function() {
     // SmartWizard initialize
     $('#smartwizard').smartWizard({
       autoAdjustHeight: true,
       toolbar: {
-        extraHtml: `<button class="btn btn-success" id='finish' onclick="onFinish()">Finish</button>
-                    <button class="btn btn-secondary" onclick="onCancel()">Cancel</button>`
+        extraHtml: `<button class="btn btn-default" id='continue' onclick="onContinue()">Add ideas to model and continue</button>
+                    <button class="btn btn-success" id='finish' onclick="onFinish()">Add ideas to model and exit</button>`
       }
     });
 
 });
 
 $("#smartwizard").on("showStep", function(e, anchorObject, currentStepIndex, nextStepIndex, stepDirection) {
+  //on 2nd step, add the previously defined problem/domain 
   if(currentStepIndex == 1){
     $('#finish').show();
+    $('#continue').show();
     const element = document.getElementById('brainstormText');
-    const pdtext = $('#exampleModal2 #pdtext').val();
+    const pdtext = $('#brainstormModal #pdtext').val();
     element.textContent = pdtext;
     element.style.fontWeight = 'bold'; 
-  }else{
-      $('#finish').hide();                
+  }else{ //only show finish button on 2nd step
+      $('#finish').hide();
+      $('#continue').hide();                 
+  }
+});
+
+$('#pdform').validate({
+  ocusInvalid: false,
+  rules: {
+    pdtext: {
+      required: true
+    }
+  },
+  messages : {
+    pdtext: "Please enter a problem/domain"
+  }
+
+}) 
+
+$("#smartwizard").on("leaveStep", function(e, anchorObject, currentStepIndex, nextStepIndex, stepDirection) {
+  const text = $('#pdtext');
+  //on 1st step and doesn't have any text on form
+  if(currentStepIndex == 0 && !text.valid()) { //&& !text.replace(/\s/g, '').length
+    //alert('Please define your problem/domain');
+    return false;
+  } else {
+    return true;
   }
 });
 
