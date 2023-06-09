@@ -127,6 +127,33 @@ $("#smartwizard").on("leaveStep", function(e, anchorObject, currentStepIndex, ne
   }
 });
 
+//API call to get a random persona for the Hall Of Fame technique
+async function getPersona() {
+  const response = await fetch("https://hall-of-fame.herokuapp.com/api/v1/persona");
+  const data = await response.json();
+  console.log(data);
+  loadPersona(data);
+}
+
+//global variable to know which clue is being shown at the moment
+var currentClue = 0;
+var clues = [];
+//load persona into HTML HOF modal
+function loadPersona(data) {
+  document.getElementById("personaNameCatg").innerHTML = data.name + " (" + data.category + ")";
+  document.getElementById("personaHeadline").innerHTML = data.headline;
+  document.getElementById("personaDesc").innerHTML = data.description;
+  document.getElementById("personaImg").src = data.img;
+  clues = data.clues;
+  document.getElementById("personaClue").innerHTML = clues[0];
+}
+
+function loadNextClue() {
+  const element = document.getElementById("personaClue");
+  if(currentClue + 1 != clues.length) {
+    element.innerHTML = clues[++currentClue];
+  } 
+}
 
 /*definition of globals to prevent undue JSHint warnings*/
 /*globals istar:false, ui:false, console:false, $:false */

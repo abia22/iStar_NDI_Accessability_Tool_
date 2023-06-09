@@ -340,10 +340,10 @@ https://github.com/jhcp/pistar
                         <figcaption class="creative-capt">Brainstorm</figcaption>
                     </figure>
                 </li>
-                <li data-toggle="modal" data-target="#">
+                <li data-toggle="modal" data-target="#HOFModal" onclick="getPersona()">
                     <figure class="creative-img">
                         <img src="https://www.pharmatimes.com/__data/assets/image/0010/1350937/creativity.jpg" alt="Creative">
-                        <figcaption class="creative-capt">Test2</figcaption>
+                        <figcaption class="creative-capt">Hall of Fame</figcaption>
                     </figure>
                 </li>
                 <li>
@@ -371,12 +371,12 @@ https://github.com/jhcp/pistar
 
 </div>
 
-<div class="modal fade" id="brainstormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="brainstormModal" tabindex="-1" role="dialog" aria-labelledby="brainstormModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
        <div class="modal-content" >
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="onClose()"> <span aria-hidden="true">&times;</span> </button> 
-            <h1 class="modal-title" id="exampleModalLabel">Brainstorm</h1>
+            <h1 class="modal-title" id="brainstormModalLabel">Brainstorm</h1>
           </div>
           <div class="modal-body">
             <div id="smartwizard">
@@ -431,6 +431,45 @@ https://github.com/jhcp/pistar
     </div>
  </div>
 </div>
+
+
+<div class="modal fade" id="HOFModal" tabindex="-1" aria-labelledby="HOFModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>   
+          <h1 class="modal-title fs-5" id="HOFModalLabel">Hall of Fame</h1>
+        </div>
+        <div class="modal-body">
+          <h3 id="personaNameCatg"><b>Persona Name (Category)</b></h3>
+          <b><p id="personaHeadline">Headline of persona</p></b>
+          <div class="row">
+            <div class="col-md-9" id="personaDesc"><p>Description of Persona</p></div>
+            <div class="col-md-3" ><img id="personaImg" src="" style="width: 150px; border: 2px solid #555;"/></div>
+          </div>
+          <p style="margin-top: 30px;"><b>Spark Clue</b></p>
+          <div id="personaClue">Persona spark clue written here</div>
+          <button type="button" class="btn btn-info" onclick="loadNextClue()" style="margin-top: 10px">Show next clue</button>
+          
+          <form role="form" id="HOFIdeasForm">
+            <div class="form-group">
+                <label for="idea">Idea 1</label>
+                <input type="text" class="form-control" id="ideaText1" placeholder="Enter idea">
+                <label for="idea">Idea 2</label>
+                <input type="text" class="form-control" id="ideaText2" placeholder="Enter idea">
+                <label for="idea">Idea 3</label>
+                <input type="text" class="form-control" id="ideaText3" placeholder="Enter idea">
+                <label for="idea">Idea 4</label>
+                <input type="text" class="form-control" id="ideaText4" placeholder="Enter idea">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
   
 
 
