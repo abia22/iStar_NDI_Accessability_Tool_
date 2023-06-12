@@ -697,14 +697,6 @@ joint.shapes.istar.AssociationLink = joint.dia.Link.define('AssociationLink',
             },
             smooth: true
         },
-        /*label: {
-            text: 'is associated to',
-            fill: 'rgb(242,242,242)',
-            fontSize: 12,
-            fontWeight: 'bold',
-            //fontVariant: 'small-caps',
-            /textShadow: '1px 1px 1px black'
-        }
         labels: [
             {
                 position: 0.4,
@@ -712,14 +704,15 @@ joint.shapes.istar.AssociationLink = joint.dia.Link.define('AssociationLink',
                     text: {
                         'font-family': 'sans-serif',
                         'font-size': 12,
-                        'font-weight': 'bold'
+                        'font-weight': 'bold',
+                        fill: 'rgb(6,6,255)'
                     },
                     rect: {
                         fill: 'rgb(242,242,242)',
                     }
                 }
             }
-        ],*/
+        ],
         source: {selector: 'circle'},
         target: {selector: 'circle'}
     },

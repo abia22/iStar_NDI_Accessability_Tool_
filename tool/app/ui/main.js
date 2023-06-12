@@ -26,7 +26,7 @@ $(document).ready(function () {
     //     'Beta version');
 });
 
-$(document).ready(function () {
+/*$(document).ready(function () {
     $("#addIdea").click(function () {
       var idea = [];
       for (let i = 1; i < 5; i++) {
@@ -40,16 +40,17 @@ $(document).ready(function () {
       });
       
     });
-});
+});*/
 
 $('#brainstormModal').on('hidden.bs.modal', function (e) {
   $('#smartwizard').smartWizard("reset");
 })
 
-function addIdeasToModel(){
+function addIdeasToModel(modalType){
+  console.log(modalType);
   var idea = [];
   for (let i = 1; i < 5; i++) {
-    const text = $("#brainstormModal #ideaText" + i).val();
+    const text = $("#" + modalType + "IdeasForm #ideaText" + i).val();
     if(text.replace(/\s/g, '').length)
       idea.push(text);
   }
@@ -59,21 +60,48 @@ function addIdeasToModel(){
   });
 }
 
-function onContinue() {
-  addIdeasToModel();
-  $('#brainstormIdeasForm')[0].reset();
+function onContinue(modalType) {
+  addIdeasToModel(modalType);
+  switch (modalType) {
+    case "brainstorm":
+       $('#brainstormIdeasForm')[0].reset();
+      break;
+
+    case "HOF":
+      $('#HOFIdeasForm')[0].reset();
+      break;
+
+    default:
+      break;
+  }
+ 
+
+  
 }
 
-function onFinish(){ 
-  addIdeasToModel();
-  onClose();
+function onFinish(modalType){ 
+  addIdeasToModel(modalType);
+  onClose(modalType);
 }
 
-function onClose(){ 
-  $('#smartwizard').smartWizard("reset"); 
-  $('#brainstormModal').modal('hide'); 
-  $('#pdform')[0].reset();
-  $('#brainstormIdeasForm')[0].reset();
+function onClose(modalType){
+  switch (modalType) {
+    case "brainstorm":
+      $('#smartwizard').smartWizard("reset"); 
+      $('#brainstormModal').modal('hide'); 
+      $('#pdform')[0].reset();
+      $('#brainstormIdeasForm')[0].reset();
+      break;
+
+    case "HOF":
+      $('#HOFModal').modal('hide'); 
+      $('#HOFIdeasForm')[0].reset();
+      break;
+
+    default:
+      break;
+  } 
+  
 }
 
 $(function() {
@@ -81,8 +109,8 @@ $(function() {
     $('#smartwizard').smartWizard({
       autoAdjustHeight: true,
       toolbar: {
-        extraHtml: `<button class="btn btn-default" id='continue' onclick="onContinue()">Add ideas to model and continue</button>
-                    <button class="btn btn-success" id='finish' onclick="onFinish()">Add ideas to model and exit</button>`
+        extraHtml: `<button class="btn btn-default" id='continue' onclick="onContinue('brainstorm')">Add ideas to model and continue</button>
+                    <button class="btn btn-success" id='finish' onclick="onFinish('brainstorm')">Add ideas to model and exit</button>`
       }
     });
 
@@ -119,8 +147,7 @@ $('#pdform').validate({
 $("#smartwizard").on("leaveStep", function(e, anchorObject, currentStepIndex, nextStepIndex, stepDirection) {
   const text = $('#pdtext');
   //on 1st step and doesn't have any text on form
-  if(currentStepIndex == 0 && !text.valid()) { //&& !text.replace(/\s/g, '').length
-    //alert('Please define your problem/domain');
+  if(currentStepIndex == 0 && !text.valid()) { 
     return false;
   } else {
     return true;
@@ -146,13 +173,38 @@ function loadPersona(data) {
   document.getElementById("personaImg").src = data.img;
   clues = data.clues;
   document.getElementById("personaClue").innerHTML = clues[0];
+  $("#prevClue").prop('disabled', true);
 }
 
 function loadNextClue() {
   const element = document.getElementById("personaClue");
-  if(currentClue + 1 != clues.length) {
+  const nextPos = currentClue + 1;
+  if(nextPos != clues.length) {
+    $("#prevClue").prop('disabled', false);
     element.innerHTML = clues[++currentClue];
-  } 
+    changeCluePos();
+  }
+  if(nextPos == clues.length - 1) {
+    $("#nextClue").prop('disabled', true);
+  }  
+}
+
+function loadPreviousClue() {
+  const element = document.getElementById("personaClue");
+  const prevPos = currentClue - 1;
+  if(prevPos >= 0) {
+    $("#nextClue").prop('disabled', false);
+    element.innerHTML = clues[--currentClue];
+    changeCluePos();
+  }
+  if(prevPos == 0) {
+    $("#prevClue").prop('disabled', true);
+  }   
+}
+
+function changeCluePos() {
+  const element = document.getElementById("cluePos");
+  element.innerHTML = (currentClue + 1) + "/3"
 }
 
 /*definition of globals to prevent undue JSHint warnings*/

@@ -641,3 +641,12 @@ label.error {
   color: #f00;
   font-size: 12px;
 }
+
+.clueContainer {
+  text-align: left;
+}
+.clueChild {
+  display: inline-block;
+  padding: 1rem 0.1rem;
+  vertical-align: middle;
+}

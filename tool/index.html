@@ -435,21 +435,49 @@ https://github.com/jhcp/pistar
 
 <div class="modal fade" id="HOFModal" tabindex="-1" aria-labelledby="HOFModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-      <div class="modal-content">
+      <div class="modal-content" >
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>   
           <h1 class="modal-title fs-5" id="HOFModalLabel">Hall of Fame</h1>
         </div>
         <div class="modal-body">
-          <h3 id="personaNameCatg"><b>Persona Name (Category)</b></h3>
+          <div class="row">
+              <div class="col-md-9"><h3 id="personaNameCatg"><b>Persona Name (Category)</b></h3></div>
+              <div class="col-md-3"><button type="button" class="btn btn-primary" onclick="">New persona</button></div>
+          </div>  
+          
           <b><p id="personaHeadline">Headline of persona</p></b>
           <div class="row">
             <div class="col-md-9" id="personaDesc"><p>Description of Persona</p></div>
             <div class="col-md-3" ><img id="personaImg" src="" style="width: 150px; border: 2px solid #555;"/></div>
           </div>
-          <p style="margin-top: 30px;"><b>Spark Clue</b></p>
+
+          <hr style="background-color: dimgrey !important;
+          color: dimgrey !important;
+          height: 0.5px !important;">
+
+            <div class="row">
+                <div class="col-md-9">
+                    <p style="margin-top: 30px;"><i class="fa fa-lightbulb-o"></i><b> Spark Clues</b></p>
+                </div>
+                <div class="col-md-3" style="padding-top: 1rem;">
+                    <button type="button" class="btn btn-primary" onclick="" >New spark clues</button>
+                </div>
+            </div>
+          
           <div id="personaClue">Persona spark clue written here</div>
-          <button type="button" class="btn btn-info" onclick="loadNextClue()" style="margin-top: 10px">Show next clue</button>
+
+          <div class='clueContainer'>
+            <div class='clueChild'>
+                <button type="button" id="prevClue" class="btn btn-default" onclick="loadPreviousClue()">Previous clue</button>
+            </div>
+            <div class='clueChild'>
+                <b><div id="cluePos">1/3</div></b>
+            </div>
+            <div class='clueChild'>
+                <button type="button" id="nextClue" class="btn btn-info" onclick="loadNextClue()">Show next clue</button>
+            </div>
+        </div>
           
           <form role="form" id="HOFIdeasForm">
             <div class="form-group">
@@ -464,8 +492,8 @@ https://github.com/jhcp/pistar
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+            <button class="btn btn-default" id='continueHOF' onclick="onContinue('HOF')">Add ideas to model and continue</button>
+            <button class="btn btn-success" id='finishHOF' onclick="onFinish('HOF')">Add ideas to model and exit</button>
         </div>
       </div>
     </div>

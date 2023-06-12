@@ -33,9 +33,8 @@ ui.setupMetamodelUI = function () {
     }
 
     //NEW IDEA NODE
-
     if (istar.metamodel.nodes.Idea) {
-        istar.metamodel.nodes.Resource.buttonStatusText = 'Adding <b>Idea</b>: Click on canvas to add an Idea';
+        istar.metamodel.nodes.Idea.buttonStatusText = 'Adding <b>Idea</b>: Click anywhere on canvas to add an Idea';
     }
 
     if (istar.metamodel.containerLinks.IsALink) {
@@ -72,15 +71,30 @@ ui.setupMetamodelUI = function () {
 
     //NEW ASSOCIATION NODE
     if (istar.metamodel.nodeLinks.AssociationLink) {
-        istar.metamodel.nodeLinks.AssociationLink.buttonLabel = 'Association';
-        istar.metamodel.nodeLinks.AssociationLink.buttonTooltip = 'Add Association link';
-        istar.metamodel.nodeLinks.AssociationLink.buttonStatusText = 'Adding <b>Association</b> link: click on the Idea and on the actor that is associated to.';
+        istar.metamodel.nodeLinks.AssociationLink.buttonLabel = ['Association', 'relates to'];
+        istar.metamodel.nodeLinks.AssociationLink.buttonTooltip = ['Add Association link'];
+        istar.metamodel.nodeLinks.AssociationLink.buttonStatusText = [
+            '',
+            'Adding <b>Association</b> link: click first on an Idea and on the actor that it is associated to.'];
+    }
+
+    //NEW AFFECT NODE
+    if (istar.metamodel.nodeLinks.AffectLink) {
+        istar.metamodel.nodeLinks.AffectLink.buttonLabel = ['Affect', 'motivates', 'restricts'];
+        istar.metamodel.nodeLinks.AffectLink.buttonTooltip = [
+            'Add Affect link (Motivates, Restricts)',
+            'Add a Motivates Affect link',
+            'Add a Restricts Affect link'];
+        istar.metamodel.nodeLinks.AffectLink.buttonStatusText = [
+            '',
+            'Adding <b>Motivates Affect</b> link: click first on an Idea and then on the Idea or Intentional Element it motivates to.',
+            'Adding <b>Restricts Affect</b> link: click first on an Idea and then on the Idea or Intentional Element it restricts to.'];
     }
 
     if (istar.metamodel.nodeLinks.ContributionLink) {
         istar.metamodel.nodeLinks.ContributionLink.buttonLabel = ['Contribution', 'Make (++)', 'Help (+)', 'Hurt (-)', 'Break (--)'];
         istar.metamodel.nodeLinks.ContributionLink.buttonTooltip = [
-            'Add Contribution link (Make, Help, Hurt or Break',
+            'Add Contribution link (Make, Help, Hurt or Break)',
             'Add a Make (++) Contribution link',
             'Add a Help (+) Contribution link',
             'Add a Hurt (-) Contribution link',
