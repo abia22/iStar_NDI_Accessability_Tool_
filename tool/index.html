@@ -155,25 +155,8 @@ https://github.com/jhcp/pistar
                     Height:&nbsp; <input id="input-diagram-height" type="text" name="height" value="1200" size="4" maxlength="6"
                                          title="Set the diagram's height (in pixels)"> px
                 </div>
-<!--                <span class="menu-line"><a id="fit-to-content-button" class="btn btn-default btn-xs button-horizontal"><i class="glyphicon glyphicon-resize-small"></i> Fit to content</a></span> TODO issue due to negative origins-->
             </div>
-            <!--<div class="menu-group">-->
-            <!--<span class="title">colors</span>-->
-            <!--<span class="menu-line">Actor boundary:-->
-            <!--<input id="all-actor-boundary-color-picker" onchange="console.log('change event');" class="jscolor {hash:true}" value="e6e6e6" size="8">-->
-            <!--</span>-->
-            <!--<span class="menu-line">Elements:-->
-            <!--<input id="all-elements-color-picker" class="jscolor {hash:true}" value="ccfacd" size="8">-->
-            <!--</span>-->
-            <!--<span class="menu-line">-->
-            <!--<a id="reset-all-colors-button" class="btn btn-default btn-xs button-horizontal"><i class="glyphicon glyphicon-erase"></i> Reset colors</a>-->
-            <!--</span>-->
-            <!--</div>-->
-            <!--<div class="menu-group">-->
-            <!--<span class="title">text</span>-->
-            <!--<span class="menu-line">Font size: <input type="number" name="fontsize" value="12" min="4" max="999"></span>-->
-            <!--<span class="menu-line"><a class="btn btn-default btn-xs" data-toggle="button"><i class="glyphicon glyphicon-italic"></i></a></span>-->
-            <!--</div>-->
+            
             <div class="menu-group">
                 <span class="menu-line">
                     <a id="menu-button-precise-links" class="btn btn-default btn-xs button-horizontal"
@@ -204,21 +187,34 @@ https://github.com/jhcp/pistar
                 </span>
             </div>
 
-            <!--<div class="menu-group">-->
-                <!--<div class="title">View</div>-->
-                <!--<span class="menu-line">-->
-                    <!--<a id="menu-button-toggle-dependencies-display" class="btn btn-default btn-xs button-horizontal"-->
-                       <!--title="Toggle between partially hiding, completely hiding, or displaying dependencies">-->
-                      <!--<span class="glyphicon glyphicon-eye-close"></span> Hide/show dependencies-->
-                    <!--</a>-->
-                <!--</span>-->
-                <!--<span class="menu-line">-->
-                    <!--<a id="menu-button-toggle-contributions-display" class="btn btn-default btn-xs button-horizontal"-->
-                       <!--title="Toggle between partially hiding, completely hiding, or displaying contribution links">-->
-                      <!--<span class="glyphicon glyphicon-eye-close"></span> Hide/show contribution links-->
-                    <!--</a>-->
-                <!--</span>-->
-            <!--</div>-->
+            <div class="menu-group">
+                <span class="menu-line">
+                    <div class="group">
+                      Background Color:&nbsp;
+                      <input data-jscolor="{
+                          closeButton:true, 
+                          closeText:'Close', 
+                          backgroundColor:'#333', 
+                          buttonColor: '#FFF', 
+                          value: '#ffff', 
+                          onChange: 'changeBackgroundColor(this)',
+                          previewSize: 0,
+                          palette: '#fff #FFFFE5 #D5D5D5 #555 #333 #1111'
+                        }">
+                    </div>
+                </span>
+                <span class="menu-line">
+                    <div class="group">
+                        Font size:&nbsp;
+                    </div>
+                </span>
+                <span class="menu-line">
+                    <div class="group">
+                        Font type:&nbsp;
+                    </div>
+                </span>
+            </div>
+
         </div>
         <div id="menu-help" class="menu-body hidden">
             <div class="menu-group">
@@ -283,7 +279,7 @@ https://github.com/jhcp/pistar
                     <div class="sidepanel-title">Element:</div>
                     <div class="group">
                         Color:&nbsp;
-                        <input id="single-element-color-picker" class="jscolor {hash:true}" value="ccfacd" size="8">
+                        <input id="single-element-color-picker" class="jscolor {hash:true, previewSize:0}" value="ccfacd" size="8" >
                         <a id="reset-element-color-button" class="btn btn-default btn-xs button-horizontal"><i class="glyphicon glyphicon-erase"></i> Reset color</a>
                         <!-- <br>Line style:&nbsp;
                         <select>
@@ -325,11 +321,14 @@ https://github.com/jhcp/pistar
             </div>
         </div>
 
+        
         <input type="checkbox" id="check">
         <label for="check">
             <i class="fas fa-bars" id="btn"></i>
             <i class="fas fa-times" id="cancel"></i>
         </label>
+      
+        
         
         <div class="sidebar">
             <header>Creative Techniques</header>
@@ -371,7 +370,7 @@ https://github.com/jhcp/pistar
 
 </div>
 
-<div class="modal fade" id="brainstormModal" tabindex="-1" role="dialog" aria-labelledby="brainstormModalLabel" aria-hidden="true">
+<div class="modal fade" id="brainstormModal" tabindex="-1" aria-labelledby="brainstormModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
        <div class="modal-content" >
           <div class="modal-header">
@@ -775,6 +774,7 @@ https://github.com/jhcp/pistar
 
 <script src="https://cdn.jsdelivr.net/npm/smartwizard@6/dist/js/jquery.smartWizard.min.js" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.5.1/jscolor.min.js"></script>
 
 <!-- end of plugin(s) area -->
 

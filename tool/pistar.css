@@ -596,7 +596,7 @@ figure.creative-img {
 }
 
 label #btn, label #cancel {
-  position: absolute;
+  position: fixed;
   cursor: pointer;
   background: black;
   color: #f0f0f0;
@@ -616,7 +616,7 @@ label #cancel {
   margin-top: 3px;
   z-index: 11;
   right: -160px;
-  font-size: 15px;
+  font-size: 12px;
   padding: 4px 9px;
   transition: all .5s ease;
 }

@@ -207,5 +207,10 @@ function changeCluePos() {
   element.innerHTML = (currentClue + 1) + "/3"
 }
 
+
+function changeBackgroundColor(color){
+  document.getElementById("diagram").style.background = color.toBackground();
+}
+
 /*definition of globals to prevent undue JSHint warnings*/
 /*globals istar:false, ui:false, console:false, $:false */
