@@ -133,7 +133,8 @@ istar.models.pistarWelcome = {
             "x": 530,
             "y": 55,
             "customProperties": {
-                "ReleaseDate": "November 29th, 2021"
+                "ReleaseDate": "November 29th, 2021",
+                
             },
             "nodes": [
                 {

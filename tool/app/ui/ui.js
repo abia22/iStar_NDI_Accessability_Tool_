@@ -781,6 +781,7 @@ ui.changeColorElements = function (color) {
 
     _.map(istar.getElements(), function (node) {
         node.attr('.element/fill', color);
+        
     });
 };
 ui.changeColorElement = function (color, element) {
@@ -788,6 +789,7 @@ ui.changeColorElement = function (color, element) {
 
     element = element || ui.getSelectedCells()[0];
     element.attr('.element', {fill: color});
+    //element.attr('.content/font-family','"Times New Roman", Times, serif');
 
     //stores the color in a property for use when saving the model
     if (color === ui.defaultElementBackgroundColor) {
@@ -1769,6 +1771,39 @@ istar.undoManager.callback = function(empty) {
         $('#menu-item-undo').removeClass('inactive');
     }
 }
+
+$('.dropdown-menu a').click(function(){
+    $('#selected').text($(this).text());
+    var font = '';
+    switch ($(this).text()) {
+        case 'Arial':
+            font = "Arial, sans-serif";
+            break;
+        
+        case 'Verdana':
+            font = "Verdana, sans-serif";
+            break;
+
+        case 'Tahoma':
+            font = "Tahoma, sans-serif";
+            break;
+
+        case 'Trebuchet':
+            font = "'Trebuchet MS', sans-serif";
+            break;
+
+        case 'Georgia':
+            font = "Georgia, serif";
+            break;        
+        default:
+            break;
+    }
+
+    _.map(istar.getElements(), function (node) {
+        node.attr('.content/font-family', font);
+        
+    });
+  });
 
 /*definition of globals to prevent undue JSHint warnings*/
 /*globals istar:false, console:false, $:false, _:false, joint:false, uiC:false, bootbox:false */
