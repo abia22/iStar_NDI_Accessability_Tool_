@@ -1772,7 +1772,7 @@ istar.undoManager.callback = function(empty) {
     }
 }
 
-$('.dropdown-menu a').click(function(){
+$('#dropdown-menu-font a').click(function(){
     $('#selected').text($(this).text());
     var font = '';
     switch ($(this).text()) {

@@ -185,6 +185,22 @@ https://github.com/jhcp/pistar
                       <span class="glyphicon glyphicon-fullscreen"></span> Toggle fullscreen
                     </a>
                 </span>
+                <span class="menu-line">
+                    Zoom:&nbsp;
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownZoom" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="font-size: xx-small;">
+                          <span id="selected-zoom">Select option</span>
+                          <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownZoom" id="dropdown-menu-zoom">
+                          <li><a href="#">50%</a></li>
+                          <li><a href="#">75%</a></li>
+                          <li><a href="#">100%</a></li>
+                          <li><a href="#">125%</a></li>
+                          <li><a href="#">150%</a></li>
+                        </ul>
+                    </div>
+                </span>
             </div>
 
             <div class="menu-group">
@@ -203,11 +219,7 @@ https://github.com/jhcp/pistar
                         }">
                     </div>
                 </span>
-                <!--<span class="menu-line">
-                    <div class="group">
-                        Font size:&nbsp;
-                    </div>
-                </span>-->
+                
                 <span class="menu-line">
                         Font family:&nbsp;
                         <div class="dropdown">
@@ -222,7 +234,7 @@ https://github.com/jhcp/pistar
                               <li><a href="#">Trebuchet</a></li>
                               <li><a href="#">Georgia</a></li>
                             </ul>
-                    </div>
+                        </div>
                 </span>
             </div>
 
@@ -328,7 +340,8 @@ https://github.com/jhcp/pistar
         <div id="out">
             <div class="cell-selection" style="display: none;"></div>
             <div id="resize-handle" style="display: none;"></div>
-            <div id="diagram">
+            <div id="container-diagram">
+                <div id="diagram"></div>
             </div>
         </div>
 
@@ -352,11 +365,11 @@ https://github.com/jhcp/pistar
                 </li>
                 <li data-toggle="modal" data-target="#HOFModal" onclick="getPersona()">
                     <figure class="creative-img">
-                        <img src="https://www.pharmatimes.com/__data/assets/image/0010/1350937/creativity.jpg" alt="Creative">
+                        <img src="https://freepngimg.com/download/gym_equipments/41777-8-hall-of-fame-png-free-photo.png" alt="Creative">
                         <figcaption class="creative-capt">Hall of Fame</figcaption>
                     </figure>
                 </li>
-                <li>
+                <!--<li>
                     <figure class="creative-img">
                         <img src="https://www.pharmatimes.com/__data/assets/image/0010/1350937/creativity.jpg" alt="Creative">
                         <figcaption class="creative-capt">Test3</figcaption>
@@ -373,7 +386,7 @@ https://github.com/jhcp/pistar
                         <img src="https://www.pharmatimes.com/__data/assets/image/0010/1350937/creativity.jpg" alt="Creative">
                         <figcaption class="creative-capt">Test5</figcaption>
                     </figure>
-                </li>
+                </li>-->
             </ul>
         </div>
 
@@ -424,13 +437,13 @@ https://github.com/jhcp/pistar
                         <form role="form" id="brainstormIdeasForm">
                             <div class="form-group">
                                 <label for="idea">Idea 1</label>
-                                <input type="text" class="form-control" id="ideaText1" placeholder="Enter idea">
+                                <input type="text" class="form-control" id="brainstormIdeaText1" placeholder="Enter idea">
                                 <label for="idea">Idea 2</label>
-                                <input type="text" class="form-control" id="ideaText2" placeholder="Enter idea">
+                                <input type="text" class="form-control" id="brainstormIdeaText2" placeholder="Enter idea">
                                 <label for="idea">Idea 3</label>
-                                <input type="text" class="form-control" id="ideaText3" placeholder="Enter idea">
+                                <input type="text" class="form-control" id="brainstormIdeaText3" placeholder="Enter idea">
                                 <label for="idea">Idea 4</label>
-                                <input type="text" class="form-control" id="ideaText4" placeholder="Enter idea">
+                                <input type="text" class="form-control" id="brainstormIdeaText4" placeholder="Enter idea">
                             </div>
                         </form>
                     </div>
@@ -466,14 +479,8 @@ https://github.com/jhcp/pistar
           color: dimgrey !important;
           height: 0.5px !important;">
 
-            <div class="row">
-                <div class="col-md-9">
-                    <p style="margin-top: 30px;"><i class="fa fa-lightbulb-o"></i><b> Spark Clues</b></p>
-                </div>
-                <div class="col-md-3" style="padding-top: 1rem;">
-                    <button type="button" class="btn btn-primary" onclick="" >New spark clues</button>
-                </div>
-            </div>
+          <p style="margin-top: 30px;"><i class="fa fa-lightbulb-o"></i><b> Spark Clues</b></p>
+            
           
           <div id="personaClue">Persona spark clue written here</div>
 
@@ -492,13 +499,13 @@ https://github.com/jhcp/pistar
           <form role="form" id="HOFIdeasForm">
             <div class="form-group">
                 <label for="idea">Idea 1</label>
-                <input type="text" class="form-control" id="ideaText1" placeholder="Enter idea">
+                <input type="text" class="form-control" id="HOFIdeaText1" placeholder="Enter idea">
                 <label for="idea">Idea 2</label>
-                <input type="text" class="form-control" id="ideaText2" placeholder="Enter idea">
+                <input type="text" class="form-control" id="HOFIdeaText2" placeholder="Enter idea">
                 <label for="idea">Idea 3</label>
-                <input type="text" class="form-control" id="ideaText3" placeholder="Enter idea">
+                <input type="text" class="form-control" id="HOFIdeaText3" placeholder="Enter idea">
                 <label for="idea">Idea 4</label>
-                <input type="text" class="form-control" id="ideaText4" placeholder="Enter idea">
+                <input type="text" class="form-control" id="HOFIdeaText4" placeholder="Enter idea">
             </div>
         </div>
         <div class="modal-footer">

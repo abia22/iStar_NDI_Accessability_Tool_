@@ -9,6 +9,7 @@
 body {
   font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji',
   'Segoe UI Emoji','Segoe UI Symbol'; /* based on Bootstrap 4 font*/
+  background-color: lightgray;
 }
 
 #tool {
@@ -24,25 +25,28 @@ body {
   flex-direction: row;
   flex-grow: 1;
   flex-wrap: wrap;
-  height:100%;
-  overflow: auto;
+  height:90%;
+  overflow: scroll;
   min-height: 1px;
 }
 
 #out {
   background-color: lightgray;
   flex-grow: 1;
-  overflow: auto;
+  overflow: hidden;
   min-height: 1px;
   width: 70vw;
   position: relative;
   height: 100%;
+  transform-origin: top left;
 }
 
 #diagram {
-  overflow: auto;
+  position: absolute;
+  overflow: scroll;
   min-height: 1px;
   flex-shrink: 0;
+  height: 70%;
 }
 
 .joint-marker-vertex {
@@ -577,7 +581,7 @@ ul li:hover {
 
 .sidebar ul li figure img {
   width:150px;
-  height:100px;
+  height:120px;
   border: 1px solid #333;
 }
 

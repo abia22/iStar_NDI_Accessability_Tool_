@@ -50,7 +50,7 @@ function addIdeasToModel(modalType){
   console.log(modalType);
   var idea = [];
   for (let i = 1; i < 5; i++) {
-    const text = $("#" + modalType + "IdeasForm #ideaText" + i).val();
+    const text = $("#" + modalType + "IdeasForm #" + modalType + "IdeaText" + i).val();
     if(text.replace(/\s/g, '').length)
       idea.push(text);
   }
@@ -204,13 +204,47 @@ function loadPreviousClue() {
 
 function changeCluePos() {
   const element = document.getElementById("cluePos");
-  element.innerHTML = (currentClue + 1) + "/3"
+  element.innerHTML = (currentClue + 1) + "/" + clues.length;
 }
 
 
 function changeBackgroundColor(color){
   document.getElementById("diagram").style.background = color.toBackground();
 }
+
+
+
+$('#dropdown-menu-zoom a').click(function(){
+  $('#selected-zoom').text($(this).text());
+    var zoom = 1;
+    const diagram = document.getElementById("out");
+    switch ($(this).text()) {
+      case '50%':
+        zoom = 0.5;
+        break;
+
+      case '75%':
+        zoom = 0.75;
+        break;
+
+      case '100%':
+        zoom = 1;
+        break;
+
+      case '125%':
+        zoom = 1.25;
+        break;
+      
+      case '150%':
+        zoom = 1.50;
+        break;
+
+      default:
+        break;
+    }
+
+    diagram.style.transform = "scale(" + zoom + ")";
+})
 
 /*definition of globals to prevent undue JSHint warnings*/
 /*globals istar:false, ui:false, console:false, $:false */
