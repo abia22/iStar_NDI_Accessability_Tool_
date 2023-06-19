@@ -336,15 +336,14 @@ https://github.com/jhcp/pistar
             </div>
         </div>
 
-
+       
         <div id="out">
-            <div class="cell-selection" style="display: none;"></div>
-            <div id="resize-handle" style="display: none;"></div>
             <div id="container-diagram">
+                <div class="cell-selection" style="display: none;"></div>
+                <div id="resize-handle" style="display: none;"></div>
                 <div id="diagram"></div>
             </div>
         </div>
-
         
         <input type="checkbox" id="check">
         <label for="check">
@@ -465,13 +464,13 @@ https://github.com/jhcp/pistar
         </div>
         <div class="modal-body">
           <div class="row">
-              <div class="col-md-9"><h3 id="personaNameCatg"><b>Persona Name (Category)</b></h3></div>
-              <div class="col-md-3"><button type="button" class="btn btn-primary" onclick="">New persona</button></div>
+              <div class="col-md-9"><h3 id="personaNameCatg"><b></b></h3></div>
+              <div class="col-md-3"><button type="button" class="btn btn-primary" onclick="getPersona()">New persona</button></div>
           </div>  
           
-          <b><p id="personaHeadline">Headline of persona</p></b>
+          <b><p id="personaHeadline"></p></b>
           <div class="row">
-            <div class="col-md-9" id="personaDesc"><p>Description of Persona</p></div>
+            <div class="col-md-9" id="personaDesc"><p></p></div>
             <div class="col-md-3" ><img id="personaImg" src="" style="width: 150px; border: 2px solid #555;"/></div>
           </div>
 
@@ -482,14 +481,14 @@ https://github.com/jhcp/pistar
           <p style="margin-top: 30px;"><i class="fa fa-lightbulb-o"></i><b> Spark Clues</b></p>
             
           
-          <div id="personaClue">Persona spark clue written here</div>
+          <div id="personaClue">No spark clues for this persona</div>
 
           <div class='clueContainer'>
             <div class='clueChild'>
                 <button type="button" id="prevClue" class="btn btn-default" onclick="loadPreviousClue()">Previous clue</button>
             </div>
             <div class='clueChild'>
-                <b><div id="cluePos">1/3</div></b>
+                <b><div id="cluePos">0/0</div></b>
             </div>
             <div class='clueChild'>
                 <button type="button" id="nextClue" class="btn btn-info" onclick="loadNextClue()">Show next clue</button>

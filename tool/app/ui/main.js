@@ -167,13 +167,43 @@ var currentClue = 0;
 var clues = [];
 //load persona into HTML HOF modal
 function loadPersona(data) {
-  document.getElementById("personaNameCatg").innerHTML = data.name + " (" + data.category + ")";
-  document.getElementById("personaHeadline").innerHTML = data.headline;
-  document.getElementById("personaDesc").innerHTML = data.description;
-  document.getElementById("personaImg").src = data.img;
+  document.getElementById("personaNameCatg").innerHTML = (data.category == null && data.category == "") ? data.name : data.name + " (" + data.category + ")";
+  if(data.headline != null && data.headline != "") {
+    document.getElementById("personaHeadline").innerHTML = data.headline;
+  }
+    
+  if(data.description != null && data.description != "") {
+    document.getElementById("personaDesc").innerHTML = data.description;
+  }
+
+  if(data.img != null && data.img != ""){
+    console.log(data.img);
+    document.getElementById("personaImg").src = data.img;
+  } else {
+    console.log("empty img");
+    document.getElementById("personaImg").style.visibility = 'hidden';
+  } 
+  
+  const prevClue = document.getElementById("prevClue");
+  const nextClue = document.getElementById("nextClue");
+  const cluePos = document.getElementById("cluePos");
   clues = data.clues;
-  document.getElementById("personaClue").innerHTML = clues[0];
-  $("#prevClue").prop('disabled', true);
+  if(clues.length == 0) {
+    prevClue.style.visibility = 'hidden';
+    cluePos.style.visibility = 'hidden';
+    nextClue.style.visibility = 'hidden';
+  } else{
+    prevClue.style.visibility = 'visible';
+    cluePos.style.visibility = 'visible';
+    nextClue.style.visibility = 'visible';
+    document.getElementById("personaClue").innerHTML = clues[0];
+    $("#prevClue").prop('disabled', true);
+    $("#nextClue").prop('disabled', false);
+    currentClue = 0;
+    changeCluePos();
+  }
+  
+ 
 }
 
 function loadNextClue() {

@@ -25,28 +25,38 @@ body {
   flex-direction: row;
   flex-grow: 1;
   flex-wrap: wrap;
-  height:90%;
-  overflow: scroll;
+  height:100%;
+  overflow: hidden;
   min-height: 1px;
 }
 
 #out {
   background-color: lightgray;
   flex-grow: 1;
-  overflow: hidden;
+  overflow: scroll;
   min-height: 1px;
   width: 70vw;
   position: relative;
   height: 100%;
   transform-origin: top left;
+  
+}
+
+#container-diagram{
+  width: auto;
+  height: auto;
+  overflow: scroll;
+  position: relative;
+  transform-origin: top left;
 }
 
 #diagram {
-  position: absolute;
-  overflow: scroll;
+  /*position: absolute;*/
+  overflow: hidden;
   min-height: 1px;
   flex-shrink: 0;
-  height: 70%;
+  height: 100%;
+  width:100%
 }
 
 .joint-marker-vertex {
