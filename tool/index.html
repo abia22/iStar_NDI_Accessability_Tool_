@@ -39,9 +39,9 @@ https://github.com/jhcp/pistar
 <div id="tool">
     <div class="menu-bar">
         <div id="logo">
-            <img src="app/ui/images/logo-pie.svg" width="21" height="21" title="a pie" alt=""/>
+            <img src="app/ui/images/logo-idea.svg" width="21" height="21" title="a pie" alt=""/>
             <img id="star" src="app/ui/images/logo-star.svg" width="12" height="12" title="a star" alt=""/>
-            <a id="logo-name" href="index.html" target="_blank" title="Open an instance of the tool in a new tab">piStar</a>
+            <a id="logo-name" href="index.html" target="_blank" title="Open an instance of the tool in a new tab">IdeaStar</a>
         </div>
         <nav class="menu-items">
             <a class="menu-item" href="#" id="menu-item-file" data-toggle="menu-file">File</a>
@@ -336,14 +336,13 @@ https://github.com/jhcp/pistar
             </div>
         </div>
 
-       
+        <!--<div id="container-diagram">-->
         <div id="out">
-            <div id="container-diagram">
-                <div class="cell-selection" style="display: none;"></div>
-                <div id="resize-handle" style="display: none;"></div>
-                <div id="diagram"></div>
-            </div>
+            <div class="cell-selection" id="cell" style="display: none;"></div>
+            <div id="resize-handle" style="display: none;"></div>
+            <div id="diagram"></div>
         </div>
+        <!--</div>-->
         
         <input type="checkbox" id="check">
         <label for="check">
@@ -430,8 +429,8 @@ https://github.com/jhcp/pistar
                     </div>
                     <div id="step-2" class="tab-pane" role="tabpanel" aria-labelledby="step-2">
                         <div style="font-size: medium; ">
-                            <p>You defined your problem as: <div id="brainstormText" ></div></p> 
-                            <p>Think about it and write what comes to mind. Any idea is valid. Write as many ideas as you can until you don't feel like it.</p>
+                            You defined your problem as: <div id="brainstormText" ></div>
+                            Think about it and write what comes to mind. Any idea is valid. Write as many ideas as you can until you don't feel like it.
                         </div>                 
                         <form role="form" id="brainstormIdeasForm">
                             <div class="form-group">

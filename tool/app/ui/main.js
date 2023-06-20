@@ -247,7 +247,7 @@ function changeBackgroundColor(color){
 $('#dropdown-menu-zoom a').click(function(){
   $('#selected-zoom').text($(this).text());
     var zoom = 1;
-    const diagram = document.getElementById("out");
+    var translate = 0;
     switch ($(this).text()) {
       case '50%':
         zoom = 0.5;
@@ -263,6 +263,7 @@ $('#dropdown-menu-zoom a').click(function(){
 
       case '125%':
         zoom = 1.25;
+        translate = 60;
         break;
       
       case '150%':
@@ -273,7 +274,10 @@ $('#dropdown-menu-zoom a').click(function(){
         break;
     }
 
+    const diagram = document.getElementById("diagram");
     diagram.style.transform = "scale(" + zoom + ")";
+    document.getElementById("cell").style.transform = "scale(" + zoom + ")";
+    document.getElementById("resize-handle").style.transform = "scale(" + zoom + ")";
 })
 
 /*definition of globals to prevent undue JSHint warnings*/

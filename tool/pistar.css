@@ -39,16 +39,17 @@ body {
   position: relative;
   height: 100%;
   transform-origin: top left;
-  
 }
 
-#container-diagram{
-  width: auto;
-  height: auto;
+/*#container-diagram{
+  background-color: lightgray;
+  flex-grow: 1;
   overflow: scroll;
+  min-height: 1px;
+  width: 500px;
   position: relative;
-  transform-origin: top left;
-}
+  height: 500px;
+}*/
 
 #diagram {
   /*position: absolute;*/
@@ -56,7 +57,8 @@ body {
   min-height: 1px;
   flex-shrink: 0;
   height: 100%;
-  width:100%
+  width:100%;
+  transform-origin: top left;
 }
 
 .joint-marker-vertex {
@@ -514,6 +516,7 @@ svg * {
   position: absolute;
   width: 12px;
   z-index: 2;
+  transform-origin: top center;
 }
 
 .cell-selection {
@@ -524,6 +527,7 @@ svg * {
   position: absolute;
   width: 0;
   z-index: 1;
+  transform-origin: top center;
 }
 
 .flash-on {
