@@ -46,6 +46,9 @@ $('#brainstormModal').on('hidden.bs.modal', function (e) {
   $('#smartwizard').smartWizard("reset");
 })
 
+//Gobal variables for the position of the Idea nodes
+var posX = 0  
+var posY = 0;
 function addIdeasToModel(modalType){
   console.log(modalType);
   var idea = [];
@@ -56,7 +59,9 @@ function addIdeasToModel(modalType){
   }
   
   idea.forEach(e => {
-    istar.addIdea(e);
+    istar.addIdea(e, {id:undefined, position:{x:posX,y:posY}});
+    posX += 20;
+    posY += 20; 
   });
 }
 
@@ -82,6 +87,8 @@ function onContinue(modalType) {
 function onFinish(modalType){ 
   addIdeasToModel(modalType);
   onClose(modalType);
+  posX = 0;
+  posY = 0;
 }
 
 function onClose(modalType){
