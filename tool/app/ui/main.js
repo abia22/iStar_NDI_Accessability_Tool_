@@ -109,8 +109,8 @@ $(function() {
     $('#smartwizard').smartWizard({
       autoAdjustHeight: true,
       toolbar: {
-        extraHtml: `<button class="btn btn-default" id='continue' onclick="onContinue('brainstorm')">Add ideas to model and continue</button>
-                    <button class="btn btn-success" id='finish' onclick="onFinish('brainstorm')">Add ideas to model and exit</button>`
+        extraHtml: `<button class="btn btn-default" id='continue' onclick="onContinue('brainstorm')" type="button">Add ideas to model and continue</button>
+                    <button class="btn btn-success" id='finish' onclick="onFinish('brainstorm')" type="button">Add ideas to model and exit</button>`
       }
     });
 
@@ -202,7 +202,6 @@ function loadPersona(data) {
     currentClue = 0;
     changeCluePos();
   }
-  
  
 }
 
@@ -243,7 +242,7 @@ function changeBackgroundColor(color){
 }
 
 
-
+//Apply zoom to diagram viewport
 $('#dropdown-menu-zoom a').click(function(){
   $('#selected-zoom').text($(this).text());
     var zoom = 1;
@@ -263,7 +262,6 @@ $('#dropdown-menu-zoom a').click(function(){
 
       case '125%':
         zoom = 1.25;
-        translate = 60;
         break;
       
       case '150%':
