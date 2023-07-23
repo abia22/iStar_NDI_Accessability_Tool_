@@ -155,6 +155,7 @@ var ui = function() {
         hideSelection: function() {
             $('#resize-handle').hide();
             $('.cell-selection').hide();
+            $('#generate-element').hide();
         },
         showSelection: function(_cell) {
             var cell = _cell || this.selectedCell;
@@ -175,6 +176,11 @@ var ui = function() {
                 if (cellView.model.isElement() && (! cellView.model.isKindOfActor()) ) {
                     $('#resize-handle').css({left: cellBox.x - 2 + cellBox.width, top: cellBox.y - 2 + cellBox.height});
                     $('#resize-handle').show();
+                }
+
+                if(cellView.model.isElement() &&  cellView.model.isIdea() ) {
+                    $('#generate-element').css({left: cellBox.x - 28, top: cellBox.y - 28 });
+                    $('#generate-element').show();
                 }
 
             }
@@ -1491,6 +1497,7 @@ ui.setupElementResizing = function () {
     $('#resize-handle').hide();
     $('.cell-selection').hide();
 
+
     ui.resizeElement = function (element, width, height) {
         element.resize(width, height);
 
@@ -1536,6 +1543,10 @@ ui.setupElementResizing = function () {
         }
     });
 };
+
+$('#generate-element').click( function (e) {
+    
+})
 
 ui.alert = function (body, title) {
     'use strict';

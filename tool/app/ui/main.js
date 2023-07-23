@@ -186,6 +186,7 @@ function loadPersona(data) {
   if(data.img != null && data.img != ""){
     console.log(data.img);
     document.getElementById("personaImg").src = data.img;
+    document.getElementById("personaImg").style.visibility = 'visible';
   } else {
     console.log("empty img");
     document.getElementById("personaImg").style.visibility = 'hidden';

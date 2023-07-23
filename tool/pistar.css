@@ -519,6 +519,18 @@ svg * {
   transform-origin: top center;
 }
 
+#generate-element {
+  background: lightyellow;
+  cursor: pointer;
+  height: 22px;
+  position: absolute;
+  width: 22px;
+  font-size: 20px;
+  border: 2px solid #1C5052;
+  z-index: 2;
+  transform-origin: top center;
+}
+
 .cell-selection {
   border: 3px dashed dimgrey;
   /*border: 4px dashed #1C5052;*/
