@@ -344,6 +344,46 @@ https://github.com/jhcp/pistar
             <div id="diagram"></div>
         </div>
         <!--</div>-->
+      
+        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="generateElementsModalLabel" aria-hidden="true" id="generateElementsModal">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h1 class="modal-title" id="generateElementsModalLabel">Generate iStar element from Idea node</h1>
+                    </div>
+                    <div class="modal-body">
+                        <p style="font-size: large;">From this idea and links associated from it, think about what iStar element it could be turned to.</p>
+                        <div style="font-size: large;">Text from selected idea:</div> <b><div id="ideaText" style="font-size: large; margin-top: 10px; margin-bottom: 10px;"></div></b>
+                        <form role="form" id="generatedElementForm">
+                            <div class="form-group">
+                                <label for="inputElementText" style="font-size: medium;">New element's text:</label>
+                                <input type="text" class="form-control" id="inputElementText" placeholder="Enter element text">
+                            </div>
+                        </form>
+                        <div class="dropdown">
+                            <button style="padding: 10px; margin-top:10px; font-size: large;" class="btn btn-default dropdown-toggle" type="button" id="dropdownElement" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                              <span id="selectedElement">Select iStar element</span>
+                              <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownElement" id="dropdown-menu-element">
+                              <li><a href="#">Actor</a></li>
+                              <li><a href="#">Agent</a></li>
+                              <li><a href="#">Role</a></li>
+                              <li><a href="#">Goal</a></li>
+                              <li><a href="#">Quality</a></li>
+                              <li><a href="#">Resource</a></li>
+                              <li><a href="#">Task</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="addElementFromIdea">Add element to model</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         
         <input type="checkbox" id="check">
         <label for="check">
@@ -368,24 +408,6 @@ https://github.com/jhcp/pistar
                         <figcaption class="creative-capt">Hall of Fame</figcaption>
                     </figure>
                 </li>
-                <!--<li>
-                    <figure class="creative-img">
-                        <img src="https://www.pharmatimes.com/__data/assets/image/0010/1350937/creativity.jpg" alt="Creative">
-                        <figcaption class="creative-capt">Test3</figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure class="creative-img">
-                        <img src="https://www.pharmatimes.com/__data/assets/image/0010/1350937/creativity.jpg" alt="Creative">
-                        <figcaption class="creative-capt">Test4</figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure class="creative-img">
-                        <img src="https://www.pharmatimes.com/__data/assets/image/0010/1350937/creativity.jpg" alt="Creative">
-                        <figcaption class="creative-capt">Test5</figcaption>
-                    </figure>
-                </li>-->
             </ul>
         </div>
 

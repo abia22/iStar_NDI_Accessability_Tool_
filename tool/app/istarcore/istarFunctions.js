@@ -631,6 +631,20 @@ var istar = function () {
         getLinks: function () {
             return this.graph.getLinks();
         },
+        getActorOfAssociation: function (element){
+            var currentLinksFromElement = istar.graph.getConnectedLinks(element);
+            var actor;
+            var actorFound = false;
+            while (!actorFound) {
+                _.forEach(currentLinksFromElement, function (link) {
+                    if((link.getSourceElement() === element) && (link.prop('type') === 'AssociationLink')){
+                        actor = link.getTargetElement();
+                        actorFound = true;
+                    }
+                 });
+            }
+            return actor;
+        },
         isElementSourceOfType: function (element, typeName) {
             var currentLinksFromElement = istar.graph.getConnectedLinks(element);
             var isSourceOf = false;

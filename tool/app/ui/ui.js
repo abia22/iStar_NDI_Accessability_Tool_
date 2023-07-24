@@ -772,6 +772,19 @@ ui.addNodeInPlace = function (clickedNode, callback, options) {
     return node;
 };
 
+ui.addNodeInActor = function (clickedNode, callback, options, currentAddingElement, nodeText) {
+    'use strict';
+    var position = clickedNode.prop('position');
+    options.position.x = position.x + 80 ;
+    options.position.y = position.y + 10;
+
+    var node;
+    node = callback(nodeText, options);
+    clickedNode.embedNode(node);
+   
+    return node;
+};
+
 
 ui.changeColorBoundaries = function (color) {
     'use strict';
@@ -1544,9 +1557,65 @@ ui.setupElementResizing = function () {
     });
 };
 
-$('#generate-element').click( function (e) {
+$('#generate-element').click( function () {
+    $('#generateElementsModal').modal('show');
+    document.getElementById("ideaText").innerHTML = ui.getSelectedCells()[0].prop('name');
+});
+
+$('#generateElementsModal').on('hidden.bs.modal', function (e) {
+    $('#selectedElement').text("Select iStar element");
+    $('#generatedElementForm')[0].reset();
+  })
+
+var selectedElement = "";
+
+$('#dropdown-menu-element a').click(function(){
+    $('#selectedElement').text($(this).text());
+});
+
+$('#addElementFromIdea').click(function () {
+    const elementText = $('#inputElementText').val();
+    if(elementText == "" || elementText == null) {
+        alert("Please write some text for the new element");
+    }
+
+    const selectedElement = $('#selectedElement').text();
+
+    if(selectedElement == "Select iStar element") {
+        alert("Please select the type of iStar element to add to the model");
+    }
     
-})
+    var newNode;
+
+    if(selectedElement == "Actor") {
+        newNode = istar.addActor(elementText, {position: {x: 0, y:0}});
+    }
+    else if(selectedElement == "Agent") {
+        newNode = istar.addAgent(elementText, {position: {x: 0, y:0}});
+    }
+    else if(selectedElement == "Role") {
+        newNode = istar.addRole(elementText, {position: {x: 0, y:0}});
+    } else { //It's an intentional element
+
+        const ideaNode = ui.getSelectedCells()[0];
+
+        if(!istar.isElementSourceOfType(ideaNode, 'AssociationLink')) {
+            alert("To add an Intentional Element, the Idea node must be associated to an actor");
+            return;
+        }
+        
+        var actor = istar.getActorOfAssociation(ideaNode);
+
+        typeofElem = istar['add' + selectedElement];
+        options = {position: {x: null, y: null}};
+
+        newNode = ui.addNodeInActor(actor, typeofElem, options, selectedElement, elementText);
+    }
+
+    newNode.prop('customProperties/Based on idea' , ui.getSelectedCells()[0].prop('name'));
+
+    $('#generateElementsModal').modal('hide');
+});
 
 ui.alert = function (body, title) {
     'use strict';
