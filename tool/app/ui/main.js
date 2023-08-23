@@ -79,9 +79,6 @@ function onContinue(modalType) {
     default:
       break;
   }
- 
-
-  
 }
 
 function onFinish(modalType){ 
