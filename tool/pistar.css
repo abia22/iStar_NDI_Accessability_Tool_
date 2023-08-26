@@ -531,6 +531,12 @@ svg * {
   transform-origin: top center;
 }
 
+#dependencyCheck {
+  visibility: hidden;
+  font-size: medium;
+  margin-top: 10px;
+}
+
 .cell-selection {
   border: 3px dashed dimgrey;
   /*border: 4px dashed #1C5052;*/

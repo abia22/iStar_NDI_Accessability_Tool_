@@ -361,20 +361,28 @@ https://github.com/jhcp/pistar
                                 <input type="text" class="form-control" id="inputElementText" placeholder="Enter element text">
                             </div>
                         </form>
-                        <div class="dropdown">
-                            <button style="padding: 10px; margin-top:10px; font-size: large;" class="btn btn-default dropdown-toggle" type="button" id="dropdownElement" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                              <span id="selectedElement">Select iStar element to add</span>
-                              <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownElement" id="dropdown-menu-element">
-                              <li><a href="#">Actor</a></li>
-                              <li><a href="#">Agent</a></li>
-                              <li><a href="#">Role</a></li>
-                              <li><a href="#">Goal</a></li>
-                              <li><a href="#">Quality</a></li>
-                              <li><a href="#">Resource</a></li>
-                              <li><a href="#">Task</a></li>
-                            </ul>
+                        <div id="selectElementType">
+                            <div class="dropdown">
+                                <button style="padding: 10px; margin-top:10px; font-size: medium;" class="btn btn-default dropdown-toggle" type="button" id="dropdownElement" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <span id="selectedElement">Select iStar element to add</span>
+                                <span class="caret"></span>
+                                </button> 
+                                <ul class="dropdown-menu" aria-labelledby="dropdownElement" id="dropdown-menu-element">
+                                    <li><a href="#">Actor</a></li>
+                                    <li><a href="#">Agent</a></li>
+                                    <li><a href="#">Role</a></li>
+                                    <li><a href="#">Goal</a></li>
+                                    <li><a href="#">Quality</a></li>
+                                    <li><a href="#">Resource</a></li>
+                                    <li><a href="#">Task</a></li>
+                                </ul>
+                            </div>
+                            <div class="form-check" id="dependencyCheck">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Add element as dependency link?
+                                </label>
+                            </div>   
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -698,7 +706,7 @@ https://github.com/jhcp/pistar
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">×</span></button>
-                    <h3 class="modal-title" id="label-instructions-modal">A Quick Guide to the piStar Tool</h3>
+                    <h3 class="modal-title" id="label-instructions-modal">A Quick Guide to the IdeaStar Tool</h3>
                 </div>
                 <div class="modal-body">
                     <h4>Visualization</h4>
@@ -713,6 +721,8 @@ https://github.com/jhcp/pistar
                         <li>To change the name of an element: double-click it.</li>
                         <li>To collapse/expand an actor/role/agent: press <kbd>alt</kbd> and click it.</li>
                         <li>To change the diagram size: use the <em>Options</em> menu.</li>
+                        <li>To change the font of the diagram: use the <em>Options</em> menu.</li>
+                        <li>To change the background color of the diagram: use the <em>Options</em> menu.</li>
                         <li>To change the label of a contribution link: select the link; on the
                             <em>Properties panel</em>, click on the current value of the link; select a new value.</li>
                         <li>To change the type of a dependency: select the dependum; on the
@@ -720,7 +730,7 @@ https://github.com/jhcp/pistar
                         <li>To change the type of an actor: select the actor; on the
                             <em>Properties panel</em>, click on the current type of the actor; select a new type.</li>
                         <li>To change the direction of a dependency: select the dependum; on the
-                            <em>Properties panel</em>, click on "Flip direction".</li>
+                            <em>Properties panel</em>, click on "Flip direction".</li>    
                     </ul>
                     <h4>Delete</h4>
                     <ul>
@@ -740,6 +750,9 @@ https://github.com/jhcp/pistar
                         <li>To add a goal/task/resource/quality in the diagram: click on the respective button and then click on the
                             actor that will contain the element. (OBS: all elements must be inside an actor/role/agent)
                         </li>
+                        <li>To add an idea in the diagram: click on the IDEA button and then click on the
+                            diagram.
+                        </li>
                         <li>To add a refinement/qualification/needed-by link: click on the respective link button, then click on the
                             source element, and lastly click on the target element.
                         </li>
@@ -752,11 +765,25 @@ https://github.com/jhcp/pistar
                         <li>To add an is-a/participates-in link: click on the ACTOR LINKS... button, select the respective option,
                             then click on the source, and lastly click on the target.
                         </li>
+                        <li>To add an association link: click on the ASSOCIATION... button, select the respective option,
+                            then click on the source idea, and lastly click on the target actor.
+                        </li>
+                        <li>To add an affect link: click on the AFFECT... button, select the respective option,
+                            then click on the source idea, and lastly click on the target intentional element or idea.
+                        </li>
                     </ul>
-
-                    <em>piStar tool version 2.1.0</em><br>
-                    For more info on this project, please visit the <a href="https://github.com/jhcp/piStar/" target="_blank">
-                    piStar repository <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>.
+                    <h4>Creative Techniques</h4>
+                    <ul>
+                        <li>To use a creative technique, click on the hamburger button on the top rigth corner of the diagram and select the respective technique.</li>
+                        <li>To empty the input boxes and continue writing more ideas, click on the ADD IDEAS TO MODEL AND CONTINUE button on the last task of the technique. 
+                            (OBS: this action will turn the currently written text for each input box into an idea node on the diagram)</li>
+                        <li>To finish a creative technique session, click on the ADD IDEAS TO MODEL AND EXIT button on the last task of the technique. 
+                            (OBS: this action will turn the currently written text for each input box into an idea node on the diagram)</li>    
+                    </ul>
+                    <em>IdeaStar tool, based on the piStar tool version 2.1.0 (<a href="https://github.com/jhcp/piStar/" target="_blank">
+                        piStar repository <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>)</em><br>
+                    For more info on this project, please visit the <a href="https://github.com/abia22/iStar_NDI_Accessability_Tool_/" target="_blank">
+                        IdeaStar repository <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>.
 
                 </div>
                 <div class="modal-footer">

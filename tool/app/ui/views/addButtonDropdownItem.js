@@ -33,6 +33,7 @@ ui.components.AddButtonDropdownItemView = Backbone.View.extend({
         // if (ui.states.editor.ADDING.data.button) {
         //     ui.states.editor.ADDING.data.button.end();
         // }
+        console.log("here");
         this.model.act();
         ui.changeAddMenuStatus(this.model.get('statusText'));
     },

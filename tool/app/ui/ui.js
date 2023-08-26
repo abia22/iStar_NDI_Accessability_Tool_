@@ -413,6 +413,7 @@ ui.defineInteractions = function () {
             ui.hideSelection();
         }
     });
+
     istar.paper.on('cell:pointerup', function (cellView, evt, x, y) {
         var currentAddingElement = ui.states.editor.ADDING.data.typeNameToAdd;
 
@@ -461,6 +462,7 @@ ui.defineInteractions = function () {
                         if (isValid.isValid) {
                             ui.addDependency(ui.states.editor.ADDING.data.linkSourceView.model, ui.states.editor.ADDING.data.typeNameToAdd, ui.states.editor.ADDING.data.linkTargetView.model);
                         }
+                        addedFromIdea = false;
                         // else {
                         //     ui.displayInvalidLinkMessage(isValid.message);
                         // }
@@ -701,6 +703,10 @@ ui.addLinkBetweenContainers = function (newLink, targetCellView) {
     }
 };
 
+var addedFromIdea = false;
+var elementText = "";
+var ideaText = "";
+
 ui.addDependency = function (source, dependencyType, target) {
     'use strict';
 
@@ -710,6 +716,11 @@ ui.addDependency = function (source, dependencyType, target) {
 
     var dependumType = dependencyType.replace('DependencyLink', '');
     node = istar['add' + dependumType](text, position);
+
+    if(addedFromIdea) {
+        node.prop('name', elementText);
+        node.prop('customProperties/Based on idea' , ideaText); 
+    }
 
     var links = istar.addDependency(source, node, target);
     links[0].on('change:vertices', ui._toggleSmoothness);
@@ -1565,16 +1576,38 @@ $('#generate-element').click( function () {
 $('#generateElementsModal').on('hidden.bs.modal', function (e) {
     $('#selectedElement').text("Select iStar element");
     $('#generatedElementForm')[0].reset();
-  })
+});
 
 var selectedElement = "";
 
 $('#dropdown-menu-element a').click(function(){
-    $('#selectedElement').text($(this).text());
+    var selected = $(this).text();
+    $('#selectedElement').text(selected);
+    const check = document.getElementById("dependencyCheck");
+
+    switch (selected) {
+        case "Actor":
+            check.style.visibility = 'hidden';
+            break;
+        
+        case "Agent":
+            check.style.visibility = 'hidden';
+            break;
+
+        case "Role":
+            check.style.visibility = 'hidden';
+            break;
+
+        default:
+            check.style.visibility = 'visible';
+            break;
+    }
 });
 
-$('#addElementFromIdea').click(function () {
-    const elementText = $('#inputElementText').val();
+$('#addElementFromIdea').click(async function () {
+    elementText = $('#inputElementText').val();
+    ideaText = ui.getSelectedCells()[0].prop('name');
+
     if(elementText == "" || elementText == null) {
         alert("Please write some text for the new element");
     }
@@ -1585,36 +1618,59 @@ $('#addElementFromIdea').click(function () {
         alert("Please select the type of iStar element to add to the model");
     }
     
+    document.getElementById("dependencyCheck").style.visibility = 'hidden';
+    $('#generateElementsModal').modal('hide');
+
     var newNode;
 
     if(selectedElement == "Actor") {
         newNode = istar.addActor(elementText, {position: {x: 0, y:0}});
+        newNode.prop('customProperties/Based on idea' , ideaText);
     }
     else if(selectedElement == "Agent") {
         newNode = istar.addAgent(elementText, {position: {x: 0, y:0}});
+        newNode.prop('customProperties/Based on idea' , ideaText);
     }
     else if(selectedElement == "Role") {
         newNode = istar.addRole(elementText, {position: {x: 0, y:0}});
-    } else { //It's an intentional element
+        newNode.prop('customProperties/Based on idea' , ideaText);
+    } else { //It's an intentional element 
 
-        const ideaNode = ui.getSelectedCells()[0];
+        if($('#flexCheckDefault').is(':checked')) {
 
-        if(!istar.isElementSourceOfType(ideaNode, 'AssociationLink')) {
-            alert("To add an Intentional Element, the Idea node must be associated to an actor");
-            return;
+            var evt = new MouseEvent("mousedown", {
+                view: window,
+                bubbles: true,
+                cancelable: true,
+                clientX: 20
+            });
+            id = "d-add-" + selectedElement + "DependencyLink";
+            ele = document.getElementById(id);
+            addedFromIdea = true;
+            ele.dispatchEvent(evt);
+                     
+            
+        } 
+        else {
+            const ideaNode = ui.getSelectedCells()[0];
+
+            if(!istar.isElementSourceOfType(ideaNode, 'AssociationLink')) {
+                alert("To add an Intentional Element, the Idea node must be associated to an actor");
+                return;
+            }
+                
+            var actor = istar.getActorOfAssociation(ideaNode);
+
+            typeofElem = istar['add' + selectedElement];
+            options = {position: {x: null, y: null}};
+
+            newNode = ui.addNodeInActor(actor, typeofElem, options, selectedElement, elementText);
+            newNode.prop('customProperties/Based on idea' , ideaText);
         }
-        
-        var actor = istar.getActorOfAssociation(ideaNode);
-
-        typeofElem = istar['add' + selectedElement];
-        options = {position: {x: null, y: null}};
-
-        newNode = ui.addNodeInActor(actor, typeofElem, options, selectedElement, elementText);
     }
-
-    newNode.prop('customProperties/Based on idea' , ui.getSelectedCells()[0].prop('name'));
-
-    $('#generateElementsModal').modal('hide');
+    
+    document.getElementById("flexCheckDefault").checked = false;
+    
 });
 
 ui.alert = function (body, title) {
