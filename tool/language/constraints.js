@@ -471,7 +471,8 @@ istar.metamodel.nodeLinks.AssociationLink.isValid = function (source, target) {
     }
     if( isValid && istar.isElementSourceOfType(source, 'AssociationLink') ) {
         isValid = false;
-        result.message = 'an Idea can only be associated to one Actor';
+        result.message = 'an Idea can only be associated to one Actor' + 
+        '<br><br><img src="language/images/errors/IdeaAssociation.svg" alt="An Idea can only be associated to one Actor"/>';
     }
 
     result.isValid = isValid;
@@ -500,7 +501,8 @@ istar.metamodel.nodeLinks.AffectLink.isValid = function (source, target) {
     }
     if ( isValid && istar.isThereLinkBetween(source, target, 'AffectLink')) {
         isValid = false;
-        result.message = 'there can only be one Affect link between the same two elements';
+        result.message = 'there can only be one Affect link between the same two elements' +
+        '<br><br><img src="language/images/errors/IdeaAffect.svg" alt="There can only be one Affect link between the same two elements"/>';
     }
     if ( isValid && (source === target) ) {
         isValid = false;
