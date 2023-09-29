@@ -1,9 +1,12 @@
-# IdeaStar - An online iStar tool for Neurodivergent accessability, based on piStar
+# IdeaStar - An online iStar tool for Neurodivergent accessibility, based on piStar
 
- This is an open-source goal modelling tool. Its key distinguishing characteristics are:
+ This is an open-source goal modeling tool. Its key distinguishing characteristics are:
   - it runs entirely on the browser, thus no installation needed
-  - high visual fidelity (we want your diagrams to be pretty, even when printed)
+  - high visual fidelity
   - supports the [iStar 2.0 standard](https://sites.google.com/site/istarlanguage/)
+  - creative techniques to help users elicitate new and novel requirements
+  - iStar extension to help bridge the use of creative techniques and the iStar language
+  - added accessibility features/design choices for neurodivergent users
 
 ## Referencing
 If you need to mention the piStar tool, please reference this publication: Pimentel, João and Castro, Jaelson. 
