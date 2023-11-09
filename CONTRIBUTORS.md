@@ -1,4 +1,4 @@
-﻿# List of Contributors
+﻿# List of Contributors of piStar
 *To see which contributions each individual made to this project, check our commit history*
 
 * Qixiang Zhou (@FrozenYogurtPuff)
@@ -6,7 +6,7 @@
 * Tong Li
 * João Pimentel (@jhcp)
 
-#### Original design and development
+#### Original design and development of piStar
 * João Pimentel
 
 #### Art
